@@ -1,0 +1,21 @@
+<div class="user-details" *ngIf="user; else loadingOrError">
+  <mat-card class="user-card">
+    <img mat-card-image [src]="user.avatar" alt="User Avatar">
+    <mat-card-content>
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="goBack()">Back to List</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #loadingOrError>
+  <div class="loading-error-container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+</ng-template>

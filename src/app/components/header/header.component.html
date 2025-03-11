@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="header">
+  <span class="header-title">User Dashboard</span>
+  <div class="search-container">
+    <mat-form-field appearance="outline">
+      <mat-label>Search by ID</mat-label>
+      <input matInput type="number" (input)="onSearch($event)">
+    </mat-form-field>
+    <div *ngIf="isLoading">
+      <mat-spinner diameter="20"></mat-spinner>
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+</mat-toolbar>

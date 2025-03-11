@@ -1,0 +1,19 @@
+<h2 >User List</h2>
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+<div class="user-grid">
+  <mat-card *ngFor="let user of users" [routerLink]="['/user', user.id]">
+    <img mat-card-image [src]="user.avatar" alt="User Avatar">
+    <mat-card-content>
+      <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+      <p>{{ user.email }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<mat-paginator
+  [length]="totalPages * 6"
+  [pageSize]="6"
+  (page)="loadUsers($event.pageIndex + 1)"
+></mat-paginator>
